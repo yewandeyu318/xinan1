@@ -2,6 +2,8 @@
 
 课程大作业：使用 C++ 实现 S-DES（Simplified DES）算法，覆盖作业文档要求的**全部五关**与**扩展要求**。
 
+**仓库地址（Gitee）：https://gitee.com/yewandeyu/yewandeyu**
+
 ## 一、功能总览
 
 | 关卡 / 要求 | 功能 | 对应程序 |
