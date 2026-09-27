@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 960" font-family="Microsoft YaHei, SimHei, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#555"/>
+    </marker>
+    <marker id="arrowg" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#999"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="960" height="960" fill="#ffffff"/>
+
+  <!-- ==================== 一、加密主流程 ==================== -->
+  <text x="480" y="36" text-anchor="middle" font-size="19" font-weight="bold" fill="#222">一、加密主流程：C = IP⁻¹( fK2( SW( fK1( IP(P) ) ) ) )</text>
+
+  <!-- 第一行：明文 → IP → fK(K1) → SW -->
+  <rect x="40" y="70" width="130" height="42" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="1.5"/>
+  <text x="105" y="90" text-anchor="middle" font-size="13" fill="#12365c">8bit 明文 P</text>
+  <text x="105" y="105" text-anchor="middle" font-size="11" fill="#567">输入 8 位二进制</text>
+
+  <line x1="172" y1="91" x2="216" y2="91" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="220" y="70" width="130" height="42" rx="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/>
+  <text x="285" y="96" text-anchor="middle" font-size="13" fill="#1b4d1e">IP 初始置换</text>
+
+  <line x1="352" y1="91" x2="396" y2="91" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="400" y="70" width="140" height="42" rx="8" fill="#fff3e0" stroke="#ef6c00" stroke-width="1.5"/>
+  <text x="470" y="90" text-anchor="middle" font-size="13" fill="#5d3400">fK 轮函数</text>
+  <text x="470" y="105" text-anchor="middle" font-size="11" fill="#864">子密钥 K1</text>
+
+  <line x1="542" y1="91" x2="586" y2="91" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="590" y="70" width="120" height="42" rx="8" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="1.5"/>
+  <text x="650" y="90" text-anchor="middle" font-size="13" fill="#4a1259">SW 交换</text>
+  <text x="650" y="105" text-anchor="middle" font-size="11" fill="#6a4">左右 4bit 互换</text>
+
+  <!-- 拐弯：SW 右侧向下进入第二行 fK(K2) 右侧 -->
+  <path d="M 712 91 L 780 91 L 780 201 L 734 201" fill="none" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- 第二行（从右往左）：fK(K2) → IP⁻¹ → 密文 -->
+  <rect x="590" y="180" width="140" height="42" rx="8" fill="#fff3e0" stroke="#ef6c00" stroke-width="1.5"/>
+  <text x="660" y="200" text-anchor="middle" font-size="13" fill="#5d3400">fK 轮函数</text>
+  <text x="660" y="215" text-anchor="middle" font-size="11" fill="#864">子密钥 K2</text>
+
+  <line x1="588" y1="201" x2="554" y2="201" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="400" y="180" width="150" height="42" rx="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/>
+  <text x="475" y="206" text-anchor="middle" font-size="13" fill="#1b4d1e">IP⁻¹ 逆初始置换</text>
+
+  <line x1="398" y1="201" x2="364" y2="201" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="230" y="180" width="130" height="42" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="1.5"/>
+  <text x="295" y="200" text-anchor="middle" font-size="13" fill="#12365c">8bit 密文 C</text>
+  <text x="295" y="215" text-anchor="middle" font-size="11" fill="#567">输出 8 位二进制</text>
+
+  <!-- 解密说明（虚线框） -->
+  <rect x="40" y="180" width="150" height="42" rx="8" fill="#fafafa" stroke="#999" stroke-width="1.2" stroke-dasharray="5,3"/>
+  <text x="115" y="200" text-anchor="middle" font-size="12" fill="#444">解密：同结构</text>
+  <text x="115" y="215" text-anchor="middle" font-size="11" fill="#666">子密钥逆序 K2 → K1</text>
+  <line x1="192" y1="201" x2="226" y2="201" stroke="#999" stroke-width="1.2" stroke-dasharray="5,3" marker-end="url(#arrowg)"/>
+
+  <!-- ==================== 二、fK 轮函数内部结构（竖向主干） ==================== -->
+  <text x="480" y="272" text-anchor="middle" font-size="17" font-weight="bold" fill="#222">二、fK 轮函数内部结构（右半 R 经 EP 扩展后参与 S 盒替换，结果与左半 L 异或）</text>
+
+  <rect x="370" y="292" width="200" height="38" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="1.5"/>
+  <text x="470" y="316" text-anchor="middle" font-size="13" fill="#12365c">右半 R（4bit）</text>
+
+  <line x1="470" y1="330" x2="470" y2="346" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="370" y="348" width="200" height="38" rx="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/>
+  <text x="470" y="372" text-anchor="middle" font-size="13" fill="#1b4d1e">EP 扩展置换 → 8bit</text>
+
+  <line x1="470" y1="386" x2="470" y2="402" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="370" y="404" width="200" height="38" rx="8" fill="#fffde7" stroke="#f9a825" stroke-width="1.5"/>
+  <text x="470" y="428" text-anchor="middle" font-size="13" fill="#5d4a00">⊕ 子密钥（K1 或 K2）</text>
+
+  <!-- 分叉：进入 S0 / S1 两个并列盒 -->
+  <path d="M 470 442 L 470 456" fill="none" stroke="#555" stroke-width="1.5"/>
+  <path d="M 340 456 L 600 456" fill="none" stroke="#555" stroke-width="1.5"/>
+  <path d="M 340 456 L 340 468" fill="none" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 600 456 L 600 468" fill="none" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="250" y="470" width="180" height="38" rx="8" fill="#fce4ec" stroke="#c2185b" stroke-width="1.5"/>
+  <text x="340" y="488" text-anchor="middle" font-size="13" fill="#5c0f38">高 4bit → S0 盒</text>
+  <text x="340" y="502" text-anchor="middle" font-size="11" fill="#75415a">输出 2bit</text>
+
+  <rect x="510" y="470" width="180" height="38" rx="8" fill="#fce4ec" stroke="#c2185b" stroke-width="1.5"/>
+  <text x="600" y="488" text-anchor="middle" font-size="13" fill="#5c0f38">低 4bit → S1 盒</text>
+  <text x="600" y="502" text-anchor="middle" font-size="11" fill="#75415a">输出 2bit</text>
+
+  <!-- 汇合 -->
+  <path d="M 340 508 L 340 524" fill="none" stroke="#555" stroke-width="1.5"/>
+  <path d="M 600 508 L 600 524" fill="none" stroke="#555" stroke-width="1.5"/>
+  <path d="M 340 524 L 600 524" fill="none" stroke="#555" stroke-width="1.5"/>
+  <path d="M 470 524 L 470 538" fill="none" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="360" y="540" width="220" height="38" rx="8" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="1.5"/>
+  <text x="470" y="564" text-anchor="middle" font-size="13" fill="#4a1259">S0‖S1 拼接 → P4 置换（4bit）</text>
+
+  <line x1="470" y1="578" x2="470" y2="594" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="370" y="596" width="200" height="38" rx="8" fill="#fffde7" stroke="#f9a825" stroke-width="1.5"/>
+  <text x="470" y="620" text-anchor="middle" font-size="13" fill="#5d4a00">⊕ 左半 L → 新左半</text>
+
+  <line x1="470" y1="634" x2="470" y2="650" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="350" y="652" width="240" height="38" rx="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/>
+  <text x="470" y="676" text-anchor="middle" font-size="13" fill="#1b4d1e">新左半 ‖ 原右半 = fK 输出（8bit）</text>
+
+  <!-- ==================== 三、子密钥生成 ==================== -->
+  <text x="480" y="744" text-anchor="middle" font-size="17" font-weight="bold" fill="#222">三、子密钥生成（10bit 主密钥 → K1、K2）</text>
+
+  <rect x="40" y="782" width="130" height="42" rx="8" fill="#e3f2fd" stroke="#1976d2" stroke-width="1.5"/>
+  <text x="105" y="808" text-anchor="middle" font-size="13" fill="#12365c">主密钥（10bit）</text>
+
+  <line x1="172" y1="803" x2="216" y2="803" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="220" y="782" width="110" height="42" rx="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/>
+  <text x="275" y="808" text-anchor="middle" font-size="13" fill="#1b4d1e">P10 置换</text>
+
+  <line x1="332" y1="803" x2="376" y2="803" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="380" y="782" width="160" height="42" rx="8" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="1.5"/>
+  <text x="460" y="808" text-anchor="middle" font-size="13" fill="#4a1259">左右各循环左移 1 位</text>
+
+  <!-- 分叉：上路进 K1，下路进"再循环左移2位" -->
+  <path d="M 542 803 L 592 803" fill="none" stroke="#555" stroke-width="1.5"/>
+  <path d="M 592 803 L 592 758 L 636 758" fill="none" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 592 803 L 592 862 L 636 862" fill="none" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="640" y="737" width="150" height="42" rx="8" fill="#fff3e0" stroke="#ef6c00" stroke-width="1.5"/>
+  <text x="715" y="763" text-anchor="middle" font-size="13" fill="#5d3400">P8 → 子密钥 K1</text>
+
+  <rect x="640" y="841" width="150" height="42" rx="8" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="1.5"/>
+  <text x="715" y="867" text-anchor="middle" font-size="13" fill="#4a1259">再循环左移 2 位</text>
+
+  <line x1="792" y1="862" x2="816" y2="862" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="820" y="841" width="130" height="42" rx="8" fill="#fff3e0" stroke="#ef6c00" stroke-width="1.5"/>
+  <text x="885" y="867" text-anchor="middle" font-size="13" fill="#5d3400">P8 → K2</text>
+</svg>
