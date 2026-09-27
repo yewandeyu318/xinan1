@@ -1,0 +1,12 @@
+# 说明：本仓库为课程作业提交，build/ 下的可执行文件与 capture/ 下的运行输出
+# 属于提交内容，故意保留在库中；此处仅忽略编辑器缓存类文件。
+
+# Python 缓存
+__pycache__/
+*.pyc
+
+# 编辑器 / 系统文件
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
