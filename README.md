@@ -3,6 +3,7 @@
 课程大作业：使用 C++ 实现 S-DES（Simplified DES）算法，覆盖作业文档要求的**全部五关**与**扩展要求**。
 
 **仓库地址（Gitee）：https://gitee.com/yewandeyu/yewandeyu**
+**仓库地址（GitHub）：https://github.com/yewandeyu318/xinan1**
 
 ## 一、功能总览
 
@@ -118,7 +119,7 @@ SdesClient.exe          # 另开一个终端启动
 
 ## 七、提交要求对照（对应文档第 5 节）
 
-- [x] 仓库链接：[https://gitee.com/yewandeyu/yewandeyu](https://gitee.com/yewandeyu/yewandeyu)
+- [x] 仓库链接：[Gitee](https://gitee.com/yewandeyu/yewandeyu) ｜ [GitHub](https://github.com/yewandeyu318/xinan1)
 - [x] 5.2.1 README（本文档）
 - [x] 程序流程图（`docs/flowchart.svg`，README 内附 Mermaid 版）
 - [x] 5.2.2 测试结果：
